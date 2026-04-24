@@ -190,9 +190,8 @@ export default function Home() {
               data-scroll-speed=".09"
               className="flex flex-row items-center space-x-1.5"
             >
-              <span className={styles.pill}>laravel</span>
-              <span className={styles.pill}>react</span>
-              <span className={styles.pill}>vue.js</span>
+              <span className={styles.pill}>hello</span>
+              <span className={styles.pill}>love</span>
             </div>
             <div>
               <h1
