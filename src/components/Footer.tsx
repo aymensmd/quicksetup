@@ -32,9 +32,6 @@ export default function Footer() {
             <p className="text-sm font-semibold">{time} UTC+1</p>
           </span>
         </span>
-       
-         
-        </Link>
       </div>
       <div className="h-1 bg-[radial-gradient(closest-side,#8486ff,#42357d,#5d83ff,transparent)] opacity-50" />
     </footer>
