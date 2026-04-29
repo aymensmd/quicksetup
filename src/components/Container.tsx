@@ -64,13 +64,7 @@ function NavItem(props: NavProps) {
       animate="visible"
       exit="hidden"
     >
-      <a
-        href={props.href}
-        onClick={handleClick}
-        className={cn(props.i === 0 && "nav-active", "nav-link")}
-      >
-        {props.text}
-      </a>
+      
     </motion.li>
   );
 }
@@ -83,7 +77,7 @@ export default function Container(props: ContainerProps) {
   const { children, ...customMeta } = props;
   const router = useRouter();
   const meta = {
-    title: "Wendo",
+    title: "Aymen S",
     description: `Full-stack website developer and TypeScript enthusiast.`,
     image: "/assets/logo.webp",
     type: "website",
@@ -121,19 +115,19 @@ export default function Container(props: ContainerProps) {
         <meta content={meta.description} name="description" />
         <meta
           property="og:url"
-          content={`https://www.wendoj.codes${router.asPath}`}
+          content={`https://www.Aymen Sj.codes${router.asPath}`}
         />
         <link
           rel="canonical"
-          href={`https://www.wendoj.codes${router.asPath}`}
+          href={`https://www.Aymen Sj.codes${router.asPath}`}
         />
         <meta property="og:type" content={meta.type} />
-        <meta property="og:site_name" content="WendoJ" />
+        <meta property="og:site_name" content="Aymen SJ" />
         <meta property="og:description" content={meta.description} />
         <meta property="og:title" content={meta.title} />
         <meta property="og:image" content={meta.image} />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="WendoJ" />
+        <meta name="twitter:site" content="Aymen SJ" />
         <meta name="twitter:title" content={meta.title} />
         <meta name="twitter:description" content={meta.description} />
         <meta name="twitter:image" content={meta.image} />
@@ -164,7 +158,7 @@ export default function Container(props: ContainerProps) {
           </button>
         </div>
         <Link href="/">
-          <span className="text-lg font-semibold">wendo</span>
+          <span className="text-lg font-semibold">Aymen S</span>
         </Link>
 
         {/* Desktop menu */}
@@ -221,7 +215,7 @@ export default function Container(props: ContainerProps) {
                 {/* Footer */}
                 <div className="flex min-h-fit w-full flex-col space-y-8 px-[22px] py-10">
                   <span className="text-sm text-muted-foreground">
-                    © {new Date().getFullYear()} wendo. All rights reserved.
+                    © {new Date().getFullYear()} Aymen S. All rights reserved.
                   </span>
                 </div>
               </div>
