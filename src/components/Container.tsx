@@ -109,7 +109,7 @@ export default function Container(props: ContainerProps) {
   return (
     <>
       <Head>
-        <title>{meta.title}</title>
+        <title>Welcome to my space</title>
         <meta name="robots" content="follow, index" />
         <meta name="theme-color" content="#7B82FE" />
         <meta content={meta.description} name="description" />
@@ -157,9 +157,7 @@ export default function Container(props: ContainerProps) {
             <CrossIcon data-hide={!isOpen} />
           </button>
         </div>
-        <Link href="/">
-          <span className="text-lg font-semibold">Aymen S</span>
-        </Link>
+        
 
         {/* Desktop menu */}
         <ul className={styles["desktop-nav"]}>
