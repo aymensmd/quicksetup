@@ -216,14 +216,7 @@ export default function Home() {
           className="mt-40 flex w-full flex-col items-center xl:mt-0 xl:min-h-screen xl:flex-row xl:justify-between"
         >
           <div className={styles.intro}>
-            <div
-              data-scroll
-              data-scroll-direction="horizontal"
-              data-scroll-speed=".09"
-              className="flex flex-row items-center space-x-1.5"
-            >
-             
-            </div>
+            <ReactBitsAnimation />
             <div className="flex flex-col xl:flex-row items-center gap-6 xl:gap-8">
               <Image
                 src="/assets/IMG_6940.png"
@@ -242,10 +235,6 @@ export default function Home() {
                   Full‑Stack Engineer · SaaS · AI Workflows
                 </motion.span>
                 <h1
-                  data-scroll
-                  data-scroll-enable-touch-speed
-                  data-scroll-speed=".06"
-                  data-scroll-direction="horizontal"
                 >
                   <span className="text-6xl tracking-tighter text-foreground 2xl:text-8xl">
                     Hello, I&apos;m
@@ -256,9 +245,6 @@ export default function Home() {
                   </span>
                 </h1>
               <p
-                data-scroll
-                data-scroll-enable-touch-speed
-                data-scroll-speed=".06"
                 className="mt-1 max-w-lg tracking-tight text-muted-foreground 2xl:text-xl"
               >
                 A junior software developer focused on architecting secure, 
@@ -282,9 +268,6 @@ export default function Home() {
               </div>
             </div>
             <span
-              data-scroll
-              data-scroll-enable-touch-speed
-              data-scroll-speed=".06"
               className="flex flex-row items-center space-x-1.5 pt-6"
             >
               <Link href="mailto:aymen.sammoud@esen.tn" passHref>
@@ -384,7 +367,7 @@ export default function Home() {
               />
             </div>
           </div>
-          <div data-scroll data-scroll-speed=".4" className="my-64">
+          <div className="my-64">
             <span className="text-gradient clash-grotesk text-sm font-semibold tracking-tighter">
               ✨ Selection
             </span>
@@ -760,5 +743,29 @@ function Gradient() {
         </svg>
       </div>
     </>
+  );
+}
+
+function ReactBitsAnimation() {
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.8 }}
+      className="mb-6 flex flex-wrap gap-2"
+    >
+      {["React", "TypeScript", "Next.js", "Framer Motion", "Tailwind"].map((bit, index) => (
+        <motion.span
+          key={bit}
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.08 * index, duration: 0.35 }}
+          whileHover={{ scale: 1.05 }}
+          className="rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-xs text-primary"
+        >
+          {bit}
+        </motion.span>
+      ))}
+    </motion.div>
   );
 }
