@@ -193,7 +193,7 @@ export default function Home() {
             </div>
             <div className="flex flex-col xl:flex-row items-center gap-6 xl:gap-8">
               <Image
-                src="/assets/wrona.jpeg"
+                src="/assets/IMG_6940.png"
                 alt="Aymen S."
                 width={250}
                 height={250}
