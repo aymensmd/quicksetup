@@ -42,13 +42,13 @@ const projects = [
   {
     title: "EventZella BI",
     description: "Business Intelligence dashboard for operational KPI tracking",
-    image: "/assets/Capture d'écran 2026-02-10 180748.png",
+    image: "/assets/Capture%20d%27%C3%A9cran%202026-02-10%20180748.png",
     href: "#",
   },
   {
     title: "LifeSwap",
     description: "Browser extension for task gamification and monetization",
-    image: "/assets/erp (1).png",
+    image: "/assets/erp%20(1).png",
     href: "#",
   },
   {
