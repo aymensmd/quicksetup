@@ -191,21 +191,29 @@ export default function Home() {
             >
              
             </div>
-            <div>
-              <h1
-                data-scroll
-                data-scroll-enable-touch-speed
-                data-scroll-speed=".06"
-                data-scroll-direction="horizontal"
-              >
-                <span className="text-6xl tracking-tighter text-foreground 2xl:text-8xl">
-                  Hello, I&apos;m
-                  <br />
-                </span>
-                <span className="clash-grotesk text-gradient text-6xl 2xl:text-8xl">
-                  Aymen S.
-                </span>
-              </h1>
+            <div className="flex flex-col xl:flex-row items-center gap-6 xl:gap-8">
+              <Image
+                src="/assets/wrona.jpeg"
+                alt="Aymen S."
+                width={250}
+                height={250}
+                className="rounded-lg object-cover w-40 h-40 xl:w-60 xl:h-60"
+              />
+              <div>
+                <h1
+                  data-scroll
+                  data-scroll-enable-touch-speed
+                  data-scroll-speed=".06"
+                  data-scroll-direction="horizontal"
+                >
+                  <span className="text-6xl tracking-tighter text-foreground 2xl:text-8xl">
+                    Hello, I&apos;m
+                    <br />
+                  </span>
+                  <span className="clash-grotesk text-gradient text-6xl 2xl:text-8xl">
+                    Aymen S.
+                  </span>
+                </h1>
               <p
                 data-scroll
                 data-scroll-enable-touch-speed
@@ -215,6 +223,7 @@ export default function Home() {
                 A junior software developer focused on architecting secure, 
                 high-performance full-stack applications.
               </p>
+              </div>
             </div>
             <span
               data-scroll
