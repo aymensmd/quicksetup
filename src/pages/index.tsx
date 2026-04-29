@@ -38,30 +38,55 @@ const projects = [
     description: "Multi-tenant SaaS with visual workflow engine and AI integration",
     image: "/assets/build-an-erp-triggered-slack-alert-workflow_tmbyW7Q4.mp4",
     href: "#",
+    date: "2024 - 2025",
+    tech: ["Laravel", "React", "PostgreSQL", "Redis", "AI/LLM"],
+    role: "Full-Stack Developer & Architect",
+    results: ["10x workflow efficiency", "Multi-tenant isolation", "Real-time sync"],
+    status: "Completed",
   },
   {
     title: "EventZella BI",
     description: "Business Intelligence dashboard for operational KPI tracking",
     image: "/assets/ce.png",
     href: "#",
+    date: "2024",
+    tech: ["Vue.js", "Node.js", "MongoDB", "D3.js"],
+    role: "Frontend & Data Visualization",
+    results: ["Real-time analytics", "Custom dashboards", "90% query optimization"],
+    status: "Completed",
   },
   {
     title: "LifeSwap",
     description: "Browser extension for task gamification and monetization",
     image: "/assets/erp.png",
     href: "#",
+    date: "2023 - 2024",
+    tech: ["TypeScript", "React", "Manifest V3", "Stripe API"],
+    role: "Full-Stack Developer",
+    results: ["5K+ users", "Gamification engine", "Payment integration"],
+    status: "Completed",
   },
   {
     title: "E2EE Messenger",
     description: "Secure messaging system featuring end-to-end encryption",
     image: "/assets/IMG_6940.png",
     href: "#",
+    date: "2023",
+    tech: ["WebSocket", "TweetNaCl.js", "React", "Express"],
+    role: "Security Lead & Backend",
+    results: ["Military-grade encryption", "Zero-knowledge architecture", "Sub-100ms latency"],
+    status: "Completed",
   },
   {
     title: "Portfolio",
     description: "My personal space built with Next.js and Spline",
     image: "/assets/IMG_6940.png",
     href: "https://github.com/AymenSammoud",
+    date: "2025",
+    tech: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+    role: "Designer & Developer",
+    results: ["Modern UI/UX", "Smooth animations", "Responsive design"],
+    status: "In Progress",
   },
 ];
 
@@ -317,7 +342,7 @@ export default function Home() {
             <span className="text-gradient clash-grotesk text-sm font-semibold tracking-tighter">
               ✨ Selection
             </span>
-            <h2 className="mt-3 text-4xl font-semibold tracking-tight tracking-tighter xl:text-6xl">
+            <h2 className="mt-3 text-4xl font-semibold tracking-tighter xl:text-6xl">
               Engineered solutions.
             </h2>
             <p className="mt-1.5 text-base tracking-tight text-muted-foreground xl:text-lg">
@@ -325,53 +350,215 @@ export default function Home() {
               ranging from ERP platforms to BI dashboards and security tools.
             </p>
 
-            {/* Carousel */}
+            {/* Timeline & Carousel */}
             <div className="mt-14">
+              {/* Timeline Indicator */}
+              <div className="mb-8 flex items-center justify-between gap-2 overflow-x-auto pb-4">
+                {projects.map((project, idx) => (
+                  <motion.div
+                    key={project.title}
+                    className="flex flex-col items-center gap-2"
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: idx * 0.1 }}
+                    viewport={{ once: true }}
+                  >
+                    <div
+                      className={cn(
+                        "h-3 w-3 rounded-full transition-all duration-300",
+                        current === idx + 1
+                          ? "scale-125 bg-gradient-to-r from-primary to-secondary"
+                          : "bg-white/20 hover:bg-white/40"
+                      )}
+                    />
+                    <span className="text-xs whitespace-nowrap text-muted-foreground">
+                      {project.date}
+                    </span>
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* Main Carousel */}
               <Carousel setApi={setCarouselApi} className="w-full">
                 <CarouselContent>
-                  {projects.map((project) => (
+                  {projects.map((project, idx) => (
                     <CarouselItem key={project.title} className="md:basis-1/2">
-                      <Card id="tilt">
-                        <CardHeader className="p-0">
-                          <Link href={project.href} target="_blank" passHref>
-                            {project.image.endsWith(".webm") ? (
-                              <video
-                                src={project.image}
-                                autoPlay
-                                loop
-                                muted
-                                className="aspect-video h-full w-full rounded-t-md bg-primary object-cover"
-                              />
-                            ) : (
-                              <Image
-                                src={project.image}
-                                alt={project.title}
-                                width={600}
-                                height={300}
-                                quality={100}
-                                className="aspect-video h-full w-full rounded-t-md bg-primary object-cover"
-                              />
-                            )}
-                          </Link>
-                        </CardHeader>
-                        <CardContent className="absolute bottom-0 w-full bg-background/50 backdrop-blur">
-                          <CardTitle className="border-t border-white/5 p-4 text-base font-normal tracking-tighter">
-                            {project.description}
-                          </CardTitle>
-                        </CardContent>
-                      </Card>
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.5 }}
+                      >
+                        <Card
+                          id="tilt"
+                          className="group relative overflow-hidden border border-white/10 bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur transition-all duration-500 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/20"
+                        >
+                          {/* Status Badge */}
+                          <motion.div
+                            className="absolute right-4 top-4 z-10"
+                            initial={{ opacity: 0, x: 20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: 0.2 }}
+                          >
+                            <span
+                              className={cn(
+                                "px-3 py-1 rounded-full text-xs font-semibold backdrop-blur",
+                                project.status === "Completed"
+                                  ? "bg-green-500/20 text-green-300"
+                                  : "bg-blue-500/20 text-blue-300"
+                              )}
+                            >
+                              {project.status}
+                            </span>
+                          </motion.div>
+
+                          {/* Image Container */}
+                          <CardHeader className="relative overflow-hidden p-0">
+                            <Link href={project.href} target="_blank" passHref>
+                              <motion.div
+                                className="relative overflow-hidden"
+                                whileHover={{ scale: 1.05 }}
+                                transition={{ duration: 0.3 }}
+                              >
+                                {project.image.endsWith(".mp4") ? (
+                                  <video
+                                    src={project.image}
+                                    autoPlay
+                                    loop
+                                    muted
+                                    className="aspect-video h-full w-full bg-primary object-cover"
+                                  />
+                                ) : (
+                                  <Image
+                                    src={project.image}
+                                    alt={project.title}
+                                    width={600}
+                                    height={300}
+                                    quality={100}
+                                    className="aspect-video h-full w-full bg-primary object-cover"
+                                  />
+                                )}
+                                {/* Overlay Gradient */}
+                                <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                              </motion.div>
+                            </Link>
+                          </CardHeader>
+
+                          {/* Content */}
+                          <CardContent className="relative space-y-4 border-t border-white/5 bg-gradient-to-b from-background/50 to-background p-4">
+                            {/* Title & Description */}
+                            <motion.div
+                              initial={{ opacity: 0, y: 10 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{ delay: 0.1 }}
+                            >
+                              <CardTitle className="text-lg font-semibold tracking-tight">
+                                {project.title}
+                              </CardTitle>
+                              <p className="mt-1 text-sm text-muted-foreground">
+                                {project.description}
+                              </p>
+                            </motion.div>
+
+                            {/* Tech Stack */}
+                            <motion.div
+                              initial={{ opacity: 0 }}
+                              animate={{ opacity: 1 }}
+                              transition={{ delay: 0.15 }}
+                            >
+                              <p className="text-xs font-medium text-muted-foreground mb-2">
+                                TECH STACK
+                              </p>
+                              <div className="flex flex-wrap gap-2">
+                                {project.tech.map((tech) => (
+                                  <span
+                                    key={tech}
+                                    className="rounded-md bg-primary/10 px-2 py-1 text-xs font-medium text-primary/80 backdrop-blur transition-all hover:bg-primary/20"
+                                  >
+                                    {tech}
+                                  </span>
+                                ))}
+                              </div>
+                            </motion.div>
+
+                            {/* Role */}
+                            <motion.div
+                              initial={{ opacity: 0 }}
+                              animate={{ opacity: 1 }}
+                              transition={{ delay: 0.2 }}
+                              className="rounded-md bg-white/5 p-3"
+                            >
+                              <p className="text-xs font-medium text-muted-foreground mb-1">
+                                MY ROLE
+                              </p>
+                              <p className="text-sm text-foreground">{project.role}</p>
+                            </motion.div>
+
+                            {/* Results */}
+                            <motion.div
+                              initial={{ opacity: 0 }}
+                              animate={{ opacity: 1 }}
+                              transition={{ delay: 0.25 }}
+                            >
+                              <p className="text-xs font-medium text-muted-foreground mb-2">
+                                KEY RESULTS
+                              </p>
+                              <ul className="space-y-1">
+                                {project.results.map((result) => (
+                                  <motion.li
+                                    key={result}
+                                    className="flex items-center gap-2 text-sm text-foreground"
+                                    initial={{ opacity: 0, x: -10 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ delay: 0.3 }}
+                                  >
+                                    <span className="h-1.5 w-1.5 rounded-full bg-gradient-to-r from-primary to-secondary" />
+                                    {result}
+                                  </motion.li>
+                                ))}
+                              </ul>
+                            </motion.div>
+
+                            {/* CTA Button */}
+                            <motion.div
+                              initial={{ opacity: 0 }}
+                              animate={{ opacity: 1 }}
+                              transition={{ delay: 0.3 }}
+                              className="pt-2"
+                            >
+                              <Link href={project.href} target="_blank" passHref>
+                                <Button
+                                  variant="outline"
+                                  className="w-full text-xs transition-all hover:bg-primary hover:text-background"
+                                >
+                                  {project.status === "In Progress"
+                                    ? "View Progress"
+                                    : "View Project"}{" "}
+                                  →
+                                </Button>
+                              </Link>
+                            </motion.div>
+                          </CardContent>
+                        </Card>
+                      </motion.div>
                     </CarouselItem>
                   ))}
                 </CarouselContent>
-                <CarouselPrevious />
-                <CarouselNext />
+                <CarouselPrevious className="left-0" />
+                <CarouselNext className="right-0" />
               </Carousel>
-              <div className="py-2 text-center text-sm text-muted-foreground">
-                <span className="font-semibold">
-                  {current} / {count}
-                </span>{" "}
-                featured works
-              </div>
+
+              {/* Carousel Counter with Animation */}
+              <motion.div
+                className="py-4 text-center text-sm text-muted-foreground"
+                key={current}
+                initial={{ opacity: 0.5, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.3 }}
+              >
+                <span className="font-semibold text-foreground">{current}</span>
+                <span> / {count}</span>
+                <span> featured works</span>
+              </motion.div>
             </div>
           </div>
         </section>
