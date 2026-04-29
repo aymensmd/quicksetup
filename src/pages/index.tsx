@@ -30,6 +30,7 @@ const aboutStats = [
   { label: "Years of experience", value: "2+" },
   { label: "Technologies mastered", value: "10+" },
   { label: "Projects delivered", value: "15+" },
+  { label: "Production systems maintained", value: "8+" },
 ];
 
 const projects = [
@@ -121,6 +122,13 @@ const services = [
       "Streamlining deployments with automated pipelines and Linux system administration.",
     icon: MonitorSmartphone,
   },
+];
+
+const principles = [
+  "Clean Architecture first",
+  "Performance budgets on every release",
+  "Security from day zero",
+  "Design systems for scale",
 ];
 
 export default function Home() {
@@ -225,6 +233,14 @@ export default function Home() {
                 className="rounded-lg object-cover w-40 h-40 xl:w-60 xl:h-60"
               />
               <div>
+                <motion.span
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.6 }}
+                  className="mb-2 inline-block rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs text-primary"
+                >
+                  Full‑Stack Engineer · SaaS · AI Workflows
+                </motion.span>
                 <h1
                   data-scroll
                   data-scroll-enable-touch-speed
@@ -248,6 +264,21 @@ export default function Home() {
                 A junior software developer focused on architecting secure, 
                 high-performance full-stack applications.
               </p>
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.15 }}
+                className="mt-4 flex flex-wrap gap-2"
+              >
+                {["Next.js", "Laravel", "React", "Vue.js", "PostgreSQL"].map((item) => (
+                  <span
+                    key={item}
+                    className="rounded-md border border-white/10 bg-white/5 px-2.5 py-1 text-xs text-muted-foreground"
+                  >
+                    {item}
+                  </span>
+                ))}
+              </motion.div>
               </div>
             </div>
             <span
@@ -303,7 +334,7 @@ export default function Home() {
               workflows, ensuring technical excellence from backend security to 
               responsive frontend interfaces.
             </h2>
-            <div className="grid grid-cols-2 gap-8 xl:grid-cols-3">
+            <div className="grid grid-cols-2 gap-8 xl:grid-cols-4">
               {aboutStats.map((stat) => (
                 <div
                   key={stat.label}
@@ -316,6 +347,21 @@ export default function Home() {
                     {stat.label}
                   </span>
                 </div>
+              ))}
+            </div>
+            <div className="grid gap-3 rounded-lg border border-white/10 bg-white/[0.03] p-4 xl:grid-cols-2">
+              {principles.map((principle, index) => (
+                <motion.div
+                  key={principle}
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ delay: index * 0.08 }}
+                  viewport={{ once: true }}
+                  className="flex items-center gap-2 rounded-md bg-background/40 px-3 py-2 text-sm text-muted-foreground"
+                >
+                  <span className="h-1.5 w-1.5 rounded-full bg-gradient-to-r from-primary to-secondary" />
+                  {principle}
+                </motion.div>
               ))}
             </div>
           </div>
@@ -358,8 +404,8 @@ export default function Home() {
                   <motion.div
                     key={project.title}
                     className="flex flex-col items-center gap-2"
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
+                    initial={{ opacity: 0, scale: 0.96 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ delay: idx * 0.1 }}
                     viewport={{ once: true }}
                   >
@@ -381,7 +427,7 @@ export default function Home() {
               {/* Main Carousel */}
               <Carousel setApi={setCarouselApi} className="w-full">
                 <CarouselContent>
-                  {projects.map((project, idx) => (
+                  {projects.map((project) => (
                     <CarouselItem key={project.title} className="md:basis-1/2">
                       <motion.div
                         initial={{ opacity: 0, scale: 0.95 }}
@@ -395,8 +441,8 @@ export default function Home() {
                           {/* Status Badge */}
                           <motion.div
                             className="absolute right-4 top-4 z-10"
-                            initial={{ opacity: 0, x: 20 }}
-                            animate={{ opacity: 1, x: 0 }}
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            animate={{ opacity: 1, scale: 1 }}
                             transition={{ delay: 0.2 }}
                           >
                             <span
@@ -416,7 +462,7 @@ export default function Home() {
                             <Link href={project.href} target="_blank" passHref>
                               <motion.div
                                 className="relative overflow-hidden"
-                                whileHover={{ scale: 1.05 }}
+                                whileHover={{ scale: 1.03 }}
                                 transition={{ duration: 0.3 }}
                               >
                                 {project.image.endsWith(".mp4") ? (
@@ -447,8 +493,8 @@ export default function Home() {
                           <CardContent className="relative space-y-4 border-t border-white/5 bg-gradient-to-b from-background/50 to-background p-4">
                             {/* Title & Description */}
                             <motion.div
-                              initial={{ opacity: 0, y: 10 }}
-                              animate={{ opacity: 1, y: 0 }}
+                              initial={{ opacity: 0, scale: 0.98 }}
+                              animate={{ opacity: 1, scale: 1 }}
                               transition={{ delay: 0.1 }}
                             >
                               <CardTitle className="text-lg font-semibold tracking-tight">
@@ -507,8 +553,8 @@ export default function Home() {
                                   <motion.li
                                     key={result}
                                     className="flex items-center gap-2 text-sm text-foreground"
-                                    initial={{ opacity: 0, x: -10 }}
-                                    animate={{ opacity: 1, x: 0 }}
+                                    initial={{ opacity: 0, scale: 0.98 }}
+                                    animate={{ opacity: 1, scale: 1 }}
                                     transition={{ delay: 0.3 }}
                                   >
                                     <span className="h-1.5 w-1.5 rounded-full bg-gradient-to-r from-primary to-secondary" />
@@ -551,7 +597,7 @@ export default function Home() {
               <motion.div
                 className="py-4 text-center text-sm text-muted-foreground"
                 key={current}
-                initial={{ opacity: 0.5, scale: 0.95 }}
+                initial={{ opacity: 0.5, scale: 0.96 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.3 }}
               >
@@ -560,6 +606,25 @@ export default function Home() {
                 <span> featured works</span>
               </motion.div>
             </div>
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              className="mt-8 grid gap-4 md:grid-cols-3"
+            >
+              <div className="rounded-lg border border-white/10 bg-white/[0.03] p-4">
+                <p className="text-xs text-muted-foreground">Delivery speed</p>
+                <p className="mt-1 text-lg font-semibold">From idea to MVP in weeks</p>
+              </div>
+              <div className="rounded-lg border border-white/10 bg-white/[0.03] p-4">
+                <p className="text-xs text-muted-foreground">Architecture</p>
+                <p className="mt-1 text-lg font-semibold">Modular, testable and scalable</p>
+              </div>
+              <div className="rounded-lg border border-white/10 bg-white/[0.03] p-4">
+                <p className="text-xs text-muted-foreground">Reliability</p>
+                <p className="mt-1 text-lg font-semibold">Monitoring + secure defaults</p>
+              </div>
+            </motion.div>
           </div>
         </section>
 
@@ -572,8 +637,8 @@ export default function Home() {
             className="my-24 flex flex-col justify-start space-y-10"
           >
             <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, scale: 0.98 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               transition={{
                 duration: 1,
                 staggerChildren: 0.5,
