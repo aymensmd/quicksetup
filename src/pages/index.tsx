@@ -36,31 +36,31 @@ const projects = [
   {
     title: "Teemo ERP",
     description: "Multi-tenant SaaS with visual workflow engine and AI integration",
-    image: "/assets/teemo.webm",
+    image: "/assets/build-an-erp-triggered-slack-alert-workflow_tmbyW7Q4.mp4",
     href: "#",
   },
   {
     title: "EventZella BI",
     description: "Business Intelligence dashboard for operational KPI tracking",
-    image: "/assets/eventzella.webm",
+    image: "/assets/Capture d'écran 2026-02-10 180748.png",
     href: "#",
   },
   {
     title: "LifeSwap",
     description: "Browser extension for task gamification and monetization",
-    image: "/assets/lifeswap.webm",
+    image: "/assets/erp (1).png",
     href: "#",
   },
   {
     title: "E2EE Messenger",
     description: "Secure messaging system featuring end-to-end encryption",
-    image: "/assets/messenger.jpeg",
+    image: "/assets/IMG_6940.png",
     href: "#",
   },
   {
     title: "Portfolio",
     description: "My personal space built with Next.js and Spline",
-    image: "/assets/portfolio.webm",
+    image: "/assets/IMG_6940.png",
     href: "https://github.com/AymenSammoud",
   },
 ];
