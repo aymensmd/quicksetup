@@ -25,8 +25,7 @@ import {
 } from "@/components/ui/carousel";
 import VanillaTilt from "vanilla-tilt";
 import { motion } from "framer-motion";
-import Folder from "@/components/Folder";
-import BubbleMenu from "@/components/BubbleMenu";
+import DotGrid from "@/components/DotGrid";
 
 const aboutStats = [
   { label: "Years of experience", value: "2+" },
@@ -209,6 +208,19 @@ export default function Home() {
   return (
     <Container>
       <div ref={refScrollContainer}>
+        <div className="fixed inset-0 -z-10 opacity-30">
+          <DotGrid 
+            dotSize={5} 
+            gap={15} 
+            baseColor="#2F293A" 
+            activeColor="#5227FF" 
+            proximity={120} 
+            shockRadius={250} 
+            shockStrength={5} 
+            resistance={750} 
+            returnDuration={1.5} 
+          />
+        </div>
         <Gradient />
 
         {/* Intro */}
@@ -658,83 +670,6 @@ export default function Home() {
                   </span>
                 </div>
               ))}
-            </motion.div>
-          </div>
-        </section>
-
-        {/* React Bits Components Showcase */}
-        <section id="showcase" data-scroll-section className="my-64">
-          <div className="space-y-16">
-            {/* Folder & BubbleMenu Showcase */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              className="grid gap-8 md:grid-cols-2"
-            >
-              {/* Folder Component */}
-              <motion.div
-                className="flex flex-col items-center rounded-lg border border-white/10 bg-white/[0.03] p-8 backdrop-blur transition-all hover:border-primary/30 hover:bg-white/5"
-                whileHover={{ scale: 1.02 }}
-              >
-                <div className="mb-4 flex h-32 w-32 items-center justify-center">
-                  <Folder
-                    size={2.5}
-                    color="#7980fe"
-                    items={[
-                      <div key="1" className="text-xs text-foreground font-semibold">Project 1</div>,
-                      <div key="2" className="text-xs text-foreground font-semibold">Project 2</div>,
-                      <div key="3" className="text-xs text-foreground font-semibold">Project 3</div>,
-                    ]}
-                  />
-                </div>
-                <h3 className="text-lg font-semibold">Folder Component</h3>
-                <p className="mt-2 text-center text-sm text-muted-foreground">
-                  Interactive folder with smooth animations. Click to reveal paper items with 
-                  magnetic hover effects.
-                </p>
-                <div className="mt-4 space-y-2 w-full">
-                  <p className="text-xs font-medium text-primary">Features:</p>
-                  <ul className="space-y-1 text-xs text-muted-foreground">
-                    <li>✓ Customizable colors</li>
-                    <li>✓ Scalable sizing</li>
-                    <li>✓ Smooth animations</li>
-                    <li>✓ Paper item rendering</li>
-                  </ul>
-                </div>
-              </motion.div>
-
-              {/* BubbleMenu Component */}
-              <motion.div
-                className="flex flex-col items-center rounded-lg border border-white/10 bg-white/[0.03] p-8 backdrop-blur transition-all hover:border-primary/30 hover:bg-white/5"
-                whileHover={{ scale: 1.02 }}
-              >
-                <div className="mb-4 w-full h-24 relative">
-                  <BubbleMenu
-                    logo={<span style={{ fontWeight: 700, fontSize: '14px' }}>RB</span>}
-                    menuBg="#ffffff"
-                    menuContentColor="#111111"
-                    useFixedPosition={false}
-                    animationEase="back.out(1.5)"
-                    animationDuration={0.5}
-                    staggerDelay={0.12}
-                  />
-                </div>
-                <h3 className="text-lg font-semibold">BubbleMenu Component</h3>
-                <p className="mt-2 text-center text-sm text-muted-foreground">
-                  Elegant bubble-based navigation menu with GSAP animations and responsive design.
-                </p>
-                <div className="mt-4 space-y-2 w-full">
-                  <p className="text-xs font-medium text-primary">Features:</p>
-                  <ul className="space-y-1 text-xs text-muted-foreground">
-                    <li>✓ GSAP animations</li>
-                    <li>✓ Customizable styling</li>
-                    <li>✓ Responsive behavior</li>
-                    <li>✓ Hover effects</li>
-                  </ul>
-                </div>
-              </motion.div>
             </motion.div>
           </div>
         </section>
