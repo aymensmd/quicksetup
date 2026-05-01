@@ -27,17 +27,17 @@
   );
 }
 
-.gooeyNavContainer {
+.gooey-nav-container {
   position: relative;
 }
 
-.gooeyNavContainer nav {
+.gooey-nav-container nav {
   display: flex;
   position: relative;
   transform: translate3d(0, 0, 0.01px);
 }
 
-.gooeyNavContainer nav ul {
+.gooey-nav-container nav ul {
   display: flex;
   gap: 2em;
   list-style: none;
@@ -49,7 +49,7 @@
   text-shadow: 0 1px 1px hsl(205deg 30% 10% / 0.2);
 }
 
-.gooeyNavContainer nav ul li {
+.gooey-nav-container nav ul li {
   border-radius: 100vw;
   position: relative;
   cursor: pointer;
@@ -61,16 +61,16 @@
   color: white;
 }
 
-.gooeyNavContainer nav ul li a {
+.gooey-nav-container nav ul li a {
   display: inline-block;
   padding: 0.6em 1em;
 }
 
-.gooeyNavContainer nav ul li:focus-within:has(:focus-visible) {
+.gooey-nav-container nav ul li:focus-within:has(:focus-visible) {
   box-shadow: 0 0 0.5px 1.5px white;
 }
 
-.gooeyNavContainer nav ul li::after {
+.gooey-nav-container nav ul li::after {
   content: '';
   position: absolute;
   inset: 0;
@@ -82,17 +82,17 @@
   z-index: -1;
 }
 
-.gooeyNavContainer nav ul li.active {
+.gooey-nav-container nav ul li.active {
   color: black;
   text-shadow: none;
 }
 
-.gooeyNavContainer nav ul li.active::after {
+.gooey-nav-container nav ul li.active::after {
   opacity: 1;
   transform: scale(1);
 }
 
-.gooeyNavContainer .effect {
+.gooey-nav-container .effect {
   position: absolute;
   left: 0;
   top: 0;
@@ -105,21 +105,21 @@
   z-index: 1;
 }
 
-.gooeyNavContainer .effect.text {
+.gooey-nav-container .effect.text {
   color: white;
   transition: color 0.3s ease;
 }
 
-.gooeyNavContainer .effect.text.active {
+.gooey-nav-container .effect.text.active {
   color: black;
 }
 
-.gooeyNavContainer .effect.filter {
+.gooey-nav-container .effect.filter {
   filter: blur(7px) contrast(100) blur(0);
   mix-blend-mode: lighten;
 }
 
-.gooeyNavContainer .effect.filter::before {
+.gooey-nav-container .effect.filter::before {
   content: '';
   position: absolute;
   inset: -75px;
@@ -127,7 +127,7 @@
   background: black;
 }
 
-.gooeyNavContainer .effect.filter::after {
+.gooey-nav-container .effect.filter::after {
   content: '';
   position: absolute;
   inset: 0;
@@ -138,7 +138,7 @@
   border-radius: 100vw;
 }
 
-.gooeyNavContainer .effect.active::after {
+.gooey-nav-container .effect.active::after {
   animation: pill 0.3s ease both;
 }
 
@@ -149,8 +149,8 @@
   }
 }
 
-:global(.particle),
-:global(.point) {
+.particle,
+.point {
   display: block;
   opacity: 0;
   width: 20px;
@@ -159,7 +159,7 @@
   transform-origin: center;
 }
 
-:global(.particle) {
+.particle {
   --time: 5s;
   position: absolute;
   top: calc(50% - 8px);
@@ -167,7 +167,7 @@
   animation: particle calc(var(--time)) ease 1 -350ms;
 }
 
-:global(.point) {
+.point {
   background: var(--color);
   opacity: 1;
   animation: point calc(var(--time)) ease 1 -350ms;
