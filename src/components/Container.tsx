@@ -1,7 +1,6 @@
 import Head from "next/head";
-import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { cn, scrollTo } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 import { useState, useEffect } from "react";
 import Footer from "@/components/Footer";
 import { useRouter } from "next/router";
@@ -43,16 +42,6 @@ const navLinks = [
   { href: "#services", text: "Services" },
   { href: "#contact", text: "Contact" },
 ];
-
-function handleClick(e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
-  const href = e.currentTarget.getAttribute("href");
-
-  if (href && href.startsWith("#")) {
-    e.preventDefault();
-    const section = document.querySelector(href);
-    scrollTo(section);
-  }
-}
 
 function NavItem(props: NavProps) {
   return (

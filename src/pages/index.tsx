@@ -27,7 +27,6 @@ import VanillaTilt from "vanilla-tilt";
 import { motion } from "framer-motion";
 import Folder from "@/components/Folder";
 import BubbleMenu from "@/components/BubbleMenu";
-import ASCIIText from "@/components/ASCIIText";
 
 const aboutStats = [
   { label: "Years of experience", value: "2+" },
@@ -666,31 +665,6 @@ export default function Home() {
         {/* React Bits Components Showcase */}
         <section id="showcase" data-scroll-section className="my-64">
           <div className="space-y-16">
-            {/* ASCII Text Hero */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="relative isolate overflow-hidden rounded-xl border border-white/10 bg-gradient-to-br from-white/5 to-white/[0.02] p-8"
-            >
-              <div className="absolute inset-0 -z-10 h-96">
-                <ASCIIText text="DEV" enableWaves={true} asciiFontSize={6} textFontSize={150} />
-              </div>
-              <div className="relative z-10 py-16">
-                <span className="text-gradient clash-grotesk text-sm font-semibold tracking-tighter">
-                  ✨ Interactive Components
-                </span>
-                <h2 className="mt-3 text-3xl font-semibold tracking-tighter xl:text-4xl">
-                  Creative React Components
-                </h2>
-                <p className="mt-2 max-w-lg text-sm text-muted-foreground">
-                  Showcasing interactive React Bits components including animated 3D text, 
-                  interactive folders, and creative UI elements.
-                </p>
-              </div>
-            </motion.div>
-
             {/* Folder & BubbleMenu Showcase */}
             <motion.div
               initial={{ opacity: 0 }}
@@ -761,41 +735,6 @@ export default function Home() {
                   </ul>
                 </div>
               </motion.div>
-            </motion.div>
-
-            {/* ASCII Text Component Details */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              className="rounded-lg border border-white/10 bg-white/[0.03] p-8 backdrop-blur"
-            >
-              <h3 className="text-lg font-semibold mb-4">ASCIIText Component</h3>
-              <p className="text-sm text-muted-foreground mb-6">
-                A creative 3D text renderer using Three.js with ASCII art overlay. Features wave animations, 
-                mouse tracking, and color shifting effects.
-              </p>
-              <div className="grid gap-4 md:grid-cols-2">
-                <div>
-                  <p className="text-xs font-medium text-primary mb-2">Props Available:</p>
-                  <ul className="space-y-1 text-xs text-muted-foreground">
-                    <li>• <code className="text-primary">text</code>: Display text</li>
-                    <li>• <code className="text-primary">enableWaves</code>: Toggle animations</li>
-                    <li>• <code className="text-primary">asciiFontSize</code>: ASCII overlay size</li>
-                    <li>• <code className="text-primary">textFontSize</code>: 3D text size</li>
-                  </ul>
-                </div>
-                <div>
-                  <p className="text-xs font-medium text-primary mb-2">How it works:</p>
-                  <ul className="space-y-1 text-xs text-muted-foreground">
-                    <li>• Renders text on 3D plane</li>
-                    <li>• Converts to ASCII art</li>
-                    <li>• Applies shader effects</li>
-                    <li>• Responsive to mouse movement</li>
-                  </ul>
-                </div>
-              </div>
             </motion.div>
           </div>
         </section>

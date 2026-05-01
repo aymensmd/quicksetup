@@ -1,7 +1,6 @@
 // React Bits Components
-export { default as Folder } from './Folder';
-export { default as BubbleMenu } from './BubbleMenu';
-export { default as ASCIIText } from './ASCIIText';
+export { default as Folder } from '../Folder';
+export { default as BubbleMenu } from '../BubbleMenu';
 
 // Types
-export type { default as FolderProps } from './Folder';
+export type { default as FolderProps } from '../Folder';

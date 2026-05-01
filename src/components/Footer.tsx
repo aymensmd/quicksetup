@@ -1,7 +1,4 @@
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
-import { MailIcon } from "lucide-react";
 
 export default function Footer() {
   // get the current time in UTC+1 time zone
