@@ -1,8 +1,10 @@
 import Head from "next/head";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { useState, useEffect } from "react";
 import Footer from "@/components/Footer";
+import GooeyNav from "@/components/GooeyNav";
 import { useRouter } from "next/router";
 import Preloader from "@/components/Preloader";
 import styles from "@/styles/Container.module.css";
@@ -53,7 +55,15 @@ function NavItem(props: NavProps) {
       animate="visible"
       exit="hidden"
     >
-      
+      <Link
+        href={props.href}
+        className={cn(
+          "transition-all duration-300 hover:text-primary",
+          props.className
+        )}
+      >
+        {props.text}
+      </Link>
     </motion.li>
   );
 }
@@ -149,17 +159,18 @@ export default function Container(props: ContainerProps) {
         
 
         {/* Desktop menu */}
-        <ul className={styles["desktop-nav"]}>
-          {navLinks.map((link, i) => (
-            <NavItem
-              key={link.href}
-              href={link.href}
-              text={link.text}
-              i={i}
-              className="text-base"
-            />
-          ))}
-        </ul>
+        <div className="hidden sm:flex items-center justify-center h-20">
+          <GooeyNav 
+            items={navLinks.map(link => ({ label: link.text, href: link.href }))} 
+            particleCount={15} 
+            particleDistances={[90, 10]} 
+            particleR={100} 
+            initialActiveIndex={0} 
+            animationTime={600} 
+            timeVariance={300} 
+            colors={[1, 2, 3, 1, 2, 3, 1, 4]} 
+          />
+        </div>
 
         {/* Mobile menu */}
         <AnimatePresence key="menu">
