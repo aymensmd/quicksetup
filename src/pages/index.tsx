@@ -26,6 +26,7 @@ import {
 import VanillaTilt from "vanilla-tilt";
 import { motion } from "framer-motion";
 import DotGrid from "@/components/DotGrid";
+import GooeyNav from "@/components/GooeyNav";
 
 const aboutStats = [
   { label: "Years of experience", value: "2+" },
@@ -207,6 +208,18 @@ export default function Home() {
 
   return (
     <Container>
+      <div style={{ height: '600px', position: 'relative' }}>
+        <GooeyNav
+          items={[{ label: "Home", href: "#home" }, { label: "About", href: "#about" }, { label: "Contact", href: "#contact" }]}
+          particleCount={15}
+          particleDistances={[90, 10]}
+          particleR={100}
+          initialActiveIndex={0}
+          animationTime={600}
+          timeVariance={300}
+          colors={[1, 2, 3, 1, 2, 3, 1, 4]}
+        />
+      </div>
       <div ref={refScrollContainer}>
         <div className="fixed inset-0 -z-10 opacity-30">
           <DotGrid 

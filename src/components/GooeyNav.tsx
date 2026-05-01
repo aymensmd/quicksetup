@@ -54,7 +54,7 @@ const GooeyNav: React.FC<GooeyNavProps> = ({
   };
 
   const makeParticles = (element: HTMLElement) => {
-    const d: [number, number] = particleDistances;
+    const d: [number, number] = particleDistances as [number, number];
     const r = particleR;
     const bubbleTime = animationTime * 2 + timeVariance;
     element.style.setProperty('--time', `${bubbleTime}ms`);
@@ -62,7 +62,7 @@ const GooeyNav: React.FC<GooeyNavProps> = ({
     for (let i = 0; i < particleCount; i++) {
       const t = animationTime * 2 + noise(timeVariance * 2);
       const p = createParticle(i, t, d, r);
-      element.classList.remove(styles.active);
+      if (styles.active) element.classList.remove(styles.active);
 
       setTimeout(() => {
         const particle = document.createElement('span');
@@ -81,7 +81,7 @@ const GooeyNav: React.FC<GooeyNavProps> = ({
         particle.appendChild(point);
         element.appendChild(particle);
         requestAnimationFrame(() => {
-          element.classList.add(styles.active);
+          if (styles.active) element.classList.add(styles.active);
         });
         setTimeout(() => {
           try {
@@ -99,14 +99,14 @@ const GooeyNav: React.FC<GooeyNavProps> = ({
     const containerRect = containerRef.current.getBoundingClientRect();
     const pos = element.getBoundingClientRect();
 
-    const styles = {
+    const positionStyles = {
       left: `${pos.x - containerRect.x}px`,
       top: `${pos.y - containerRect.y}px`,
       width: `${pos.width}px`,
       height: `${pos.height}px`
     };
-    Object.assign(filterRef.current.style, styles);
-    Object.assign(textRef.current.style, styles);
+    Object.assign(filterRef.current.style, positionStyles);
+    Object.assign(textRef.current.style, positionStyles);
     textRef.current.innerText = element.innerText;
   };
 
@@ -123,10 +123,10 @@ const GooeyNav: React.FC<GooeyNavProps> = ({
     }
 
     if (textRef.current) {
-      textRef.current.classList.remove(styles.active);
+      if (styles.active) textRef.current.classList.remove(styles.active);
 
       void textRef.current.offsetWidth;
-      textRef.current.classList.add(styles.active);
+      if (styles.active) textRef.current.classList.add(styles.active);
     }
 
     if (filterRef.current) {
@@ -154,7 +154,7 @@ const GooeyNav: React.FC<GooeyNavProps> = ({
     const activeLi = navRef.current.querySelectorAll('li')[activeIndex] as HTMLElement;
     if (activeLi) {
       updateEffectPosition(activeLi);
-      textRef.current?.classList.add(styles.active);
+      if (styles.active) textRef.current?.classList.add(styles.active);
     }
 
     const resizeObserver = new ResizeObserver(() => {
