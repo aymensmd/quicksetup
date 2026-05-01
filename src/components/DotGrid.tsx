@@ -1,8 +1,8 @@
 'use client';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/prefer-optional-chain */
 import React, { useRef, useEffect, useCallback, useMemo } from 'react';
 import { gsap } from 'gsap';
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
 const throttle = (func: (...args: any[]) => void, limit: number) => {
   let lastCall = 0;
   return function (this: any, ...args: any[]) {
@@ -215,8 +215,8 @@ const DotGrid: React.FC<DotGridProps> = ({
       pr.vy = vy;
       pr.speed = speed;
 
-      if (canvasRef.current) {
-        const rect = canvasRef.current.getBoundingClientRect();
+      const rect = canvasRef.current?.getBoundingClientRect();
+      if (rect) {
         pr.x = e.clientX - rect.left;
         pr.y = e.clientY - rect.top;
       }
@@ -249,8 +249,8 @@ const DotGrid: React.FC<DotGridProps> = ({
     };
 
     const onClick = (e: MouseEvent) => {
-      if (!canvasRef.current) return;
-      const rect = canvasRef.current.getBoundingClientRect();
+      const rect = canvasRef.current?.getBoundingClientRect();
+      if (!rect) return;
       const cx = e.clientX - rect.left;
       const cy = e.clientY - rect.top;
       for (const dot of dotsRef.current) {
