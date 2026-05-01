@@ -1,4 +1,4 @@
-:root {
+.linearEase {
   --linear-ease: linear(
     0,
     0.068,
@@ -27,17 +27,17 @@
   );
 }
 
-.gooey-nav-container {
+.gooeyNavContainer {
   position: relative;
 }
 
-.gooey-nav-container nav {
+.gooeyNavContainer nav {
   display: flex;
   position: relative;
   transform: translate3d(0, 0, 0.01px);
 }
 
-.gooey-nav-container nav ul {
+.gooeyNavContainer nav ul {
   display: flex;
   gap: 2em;
   list-style: none;
@@ -49,7 +49,7 @@
   text-shadow: 0 1px 1px hsl(205deg 30% 10% / 0.2);
 }
 
-.gooey-nav-container nav ul li {
+.gooeyNavContainer nav ul li {
   border-radius: 100vw;
   position: relative;
   cursor: pointer;
@@ -61,16 +61,16 @@
   color: white;
 }
 
-.gooey-nav-container nav ul li a {
+.gooeyNavContainer nav ul li a {
   display: inline-block;
   padding: 0.6em 1em;
 }
 
-.gooey-nav-container nav ul li:focus-within:has(:focus-visible) {
+.gooeyNavContainer nav ul li:focus-within:has(:focus-visible) {
   box-shadow: 0 0 0.5px 1.5px white;
 }
 
-.gooey-nav-container nav ul li::after {
+.gooeyNavContainer nav ul li::after {
   content: '';
   position: absolute;
   inset: 0;
@@ -82,17 +82,17 @@
   z-index: -1;
 }
 
-.gooey-nav-container nav ul li.active {
+.gooeyNavContainer nav ul li.active {
   color: black;
   text-shadow: none;
 }
 
-.gooey-nav-container nav ul li.active::after {
+.gooeyNavContainer nav ul li.active::after {
   opacity: 1;
   transform: scale(1);
 }
 
-.gooey-nav-container .effect {
+.gooeyNavContainer .effect {
   position: absolute;
   left: 0;
   top: 0;
@@ -105,21 +105,21 @@
   z-index: 1;
 }
 
-.gooey-nav-container .effect.text {
+.gooeyNavContainer .effect.text {
   color: white;
   transition: color 0.3s ease;
 }
 
-.gooey-nav-container .effect.text.active {
+.gooeyNavContainer .effect.text.active {
   color: black;
 }
 
-.gooey-nav-container .effect.filter {
+.gooeyNavContainer .effect.filter {
   filter: blur(7px) contrast(100) blur(0);
   mix-blend-mode: lighten;
 }
 
-.gooey-nav-container .effect.filter::before {
+.gooeyNavContainer .effect.filter::before {
   content: '';
   position: absolute;
   inset: -75px;
@@ -127,7 +127,7 @@
   background: black;
 }
 
-.gooey-nav-container .effect.filter::after {
+.gooeyNavContainer .effect.filter::after {
   content: '';
   position: absolute;
   inset: 0;
@@ -138,7 +138,7 @@
   border-radius: 100vw;
 }
 
-.gooey-nav-container .effect.active::after {
+.gooeyNavContainer .effect.active::after {
   animation: pill 0.3s ease both;
 }
 
@@ -149,8 +149,8 @@
   }
 }
 
-.particle,
-.point {
+:global(.particle),
+:global(.point) {
   display: block;
   opacity: 0;
   width: 20px;
@@ -159,7 +159,7 @@
   transform-origin: center;
 }
 
-.particle {
+:global(.particle) {
   --time: 5s;
   position: absolute;
   top: calc(50% - 8px);
@@ -167,7 +167,7 @@
   animation: particle calc(var(--time)) ease 1 -350ms;
 }
 
-.point {
+:global(.point) {
   background: var(--color);
   opacity: 1;
   animation: point calc(var(--time)) ease 1 -350ms;
