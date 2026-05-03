@@ -149,7 +149,15 @@
   }
 }
 
-:global(.particle),
+:global(.particle) {
+  display: block;
+  opacity: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  transform-origin: center;
+}
+
 :global(.point) {
   display: block;
   opacity: 0;
