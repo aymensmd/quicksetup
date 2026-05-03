@@ -112,16 +112,18 @@
   .particle {
     display: block;
     opacity: 0;
-    width: 20px;
-    height: 20px;
+    width: 10px;            /* Thinner particle */
+    height: 4px;             /* Thinner particle */
     border-radius: 100%;
     transform-origin: center;
     --time: 5s;
     position: absolute;
-    top: calc(50% - 8px);
-    left: calc(50% - 8px);
-    animation: particle calc(var(--time)) ease 1 -350ms;
-  }
+    /* Centering logic for a thinner bar */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    animation: particle var(--time) ease 1 -350ms;
+}
 
   .point {
     display: block;
