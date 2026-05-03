@@ -14,6 +14,7 @@ import { TriangleDownIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
 import { cn, scrollTo } from "@/lib/utils";
 import Image from "next/image";
+import dynamic from "next/dynamic";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Carousel,
@@ -26,6 +27,10 @@ import {
 import VanillaTilt from "vanilla-tilt";
 import { motion } from "framer-motion";
 import DotGrid from "@/components/DotGrid";
+
+const Spline = dynamic(() => import("@splinetool/react-spline"), {
+  ssr: false,
+});
 
 const aboutStats = [
   { label: "Years of experience", value: "2+" },
@@ -307,6 +312,19 @@ export default function Home() {
               <TriangleDownIcon className="mt-1 animate-bounce" />
             </div>
           </div>
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.15 }}
+            className="relative mt-12 w-full max-w-3xl xl:mt-0 xl:max-w-none"
+          >
+            <div className="absolute inset-0 -z-10 bg-gradient-to-br from-primary/20 via-transparent to-secondary/20 blur-3xl" />
+            <div id="canvas-container" className="relative w-full shadow-2xl shadow-black/20">
+              <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-24 bg-gradient-to-b from-background via-background/30 to-transparent" />
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-24 bg-gradient-to-t from-background via-background/30 to-transparent" />
+              <Spline scene="https://prod.spline.design/ENRf0xsOUUK3CzAm/scene.splinecode" />
+            </div>
+          </motion.div>
         </section>
 
         {/* About */}
