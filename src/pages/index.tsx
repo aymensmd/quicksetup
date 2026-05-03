@@ -146,9 +146,6 @@ export default function Home() {
 
   // handle scroll
   useEffect(() => {
-    const sections = document.querySelectorAll("section");
-    const navLinks = document.querySelectorAll(".nav-link");
-
     async function getLocomotive() {
       const Locomotive = (await import("locomotive-scroll")).default;
       new Locomotive({
@@ -158,24 +155,7 @@ export default function Home() {
     }
 
     function handleScroll() {
-      let current = "";
       setIsScrolled(window.scrollY > 0);
-
-      sections.forEach((section) => {
-        const sectionTop = section.offsetTop;
-        if (window.scrollY >= sectionTop - 250) {
-          current = section.getAttribute("id") ?? "";
-        }
-      });
-
-      navLinks.forEach((li) => {
-        li.classList.remove("nav-active");
-
-        if (li.getAttribute("href") === `#${current}`) {
-          li.classList.add("nav-active");
-          console.log(li.getAttribute("href"));
-        }
-      });
     }
 
     void getLocomotive();
@@ -232,7 +212,7 @@ export default function Home() {
         <section
           id="home"
           data-scroll-section
-          className="mt-40 flex w-full flex-col items-center xl:mt-0 xl:min-h-screen xl:flex-row xl:justify-between"
+          className="mt-28 grid w-full items-center gap-14 xl:mt-0 xl:min-h-screen xl:grid-cols-[minmax(0,1fr)_690px] xl:gap-10"
         >
           <div className={styles.intro}>
             <ReactBitsAnimation />
