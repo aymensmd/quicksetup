@@ -4,7 +4,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { useState, useEffect } from "react";
 import Footer from "@/components/Footer";
-import GooeyNav from "@/components/GooeyNav";
 import { useRouter } from "next/router";
 import Preloader from "@/components/Preloader";
 import styles from "@/styles/Container.module.css";
@@ -159,17 +158,18 @@ export default function Container(props: ContainerProps) {
         
 
         {/* Desktop menu */}
-        <div className="hidden sm:flex items-center justify-center h-20">
-          <GooeyNav 
-            items={navLinks.map(link => ({ label: link.text, href: link.href }))} 
-            particleCount={15} 
-            particleDistances={[90, 10]} 
-            particleR={100} 
-            initialActiveIndex={0} 
-            animationTime={600} 
-            timeVariance={300} 
-            colors={[1, 2, 3, 1, 2, 3, 1, 4]} 
-          />
+        <div className="hidden h-20 items-center justify-center sm:flex">
+          <ul className="flex items-center gap-8">
+            {navLinks.map((link, i) => (
+              <NavItem
+                key={link.href}
+                href={link.href}
+                text={link.text}
+                i={i}
+                className="nav-link text-sm"
+              />
+            ))}
+          </ul>
         </div>
 
         {/* Mobile menu */}
