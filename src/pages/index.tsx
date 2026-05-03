@@ -26,6 +26,7 @@ import {
 import VanillaTilt from "vanilla-tilt";
 import { motion } from "framer-motion";
 import DotGrid from "@/components/DotGrid";
+import PerspectiveMarqueeDemo from "@/components/ui/perspective-marquee-demo";
 
 const aboutStats = [
   { label: "Years of experience", value: "2+" },
@@ -306,6 +307,24 @@ export default function Home() {
               Scroll to explore{" "}
               <TriangleDownIcon className="mt-1 animate-bounce" />
             </div>
+          </div>
+        </section>
+
+        <section id="showcase" data-scroll-section className="my-24">
+          <div className="mx-auto max-w-6xl">
+            <div className="mb-8 max-w-2xl">
+              <span className="clash-grotesk text-sm font-semibold tracking-tighter text-gradient">
+                Motion showcase
+              </span>
+              <h2 className="mt-3 text-4xl font-semibold tracking-tighter xl:text-6xl">
+                Perspective marquee.
+              </h2>
+              <p className="mt-2 text-base tracking-tight text-muted-foreground xl:text-lg">
+                A Remotion-powered brand ribbon that adds motion depth without needing any
+                extra assets.
+              </p>
+            </div>
+            <PerspectiveMarqueeDemo />
           </div>
         </section>
 
