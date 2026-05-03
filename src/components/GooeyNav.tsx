@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useRef, useEffect, useState } from 'react';
-import '@/styles/GooeyNav.css';
+import styles from './GooeyNav.module.css';
 
 interface GooeyNavItem {
   label: string;
@@ -62,7 +62,7 @@ const GooeyNav: React.FC<GooeyNavProps> = ({
     for (let i = 0; i < particleCount; i++) {
       const t = animationTime * 2 + noise(timeVariance * 2);
       const p = createParticle(i, t, d, r);
-      element.classList.remove('active');
+      if (styles.active) element.classList.remove(styles.active);
 
       setTimeout(() => {
         const particle = document.createElement('span');
@@ -81,7 +81,7 @@ const GooeyNav: React.FC<GooeyNavProps> = ({
         particle.appendChild(point);
         element.appendChild(particle);
         requestAnimationFrame(() => {
-          element.classList.add('active');
+          if (styles.active) element.classList.add(styles.active);
         });
         setTimeout(() => {
           try {
@@ -123,10 +123,10 @@ const GooeyNav: React.FC<GooeyNavProps> = ({
     }
 
     if (textRef.current) {
-      textRef.current.classList.remove('active');
+      if (styles.active) textRef.current.classList.remove(styles.active);
 
       void textRef.current.offsetWidth;
-      textRef.current.classList.add('active');
+      if (styles.active) textRef.current.classList.add(styles.active);
     }
 
     if (filterRef.current) {
@@ -154,7 +154,7 @@ const GooeyNav: React.FC<GooeyNavProps> = ({
     const activeLi = navRef.current.querySelectorAll('li')[activeIndex] as HTMLElement;
     if (activeLi) {
       updateEffectPosition(activeLi);
-      textRef.current?.classList.add('active');
+      if (styles.active) textRef.current?.classList.add(styles.active);
     }
 
     const resizeObserver = new ResizeObserver(() => {
@@ -169,11 +169,11 @@ const GooeyNav: React.FC<GooeyNavProps> = ({
   }, [activeIndex]);
 
   return (
-    <div className="gooey-nav-container" ref={containerRef}>
+    <div className={styles.gooeyNavContainer} ref={containerRef}>
       <nav>
         <ul ref={navRef}>
           {items.map((item, index) => (
-            <li key={index} className={activeIndex === index ? 'active' : ''}>
+            <li key={index} className={activeIndex === index ? styles.active : ''}>
               <a href={item.href} onClick={e => handleClick(e, index)} onKeyDown={e => handleKeyDown(e, index)}>
                 {item.label}
               </a>
@@ -181,8 +181,8 @@ const GooeyNav: React.FC<GooeyNavProps> = ({
           ))}
         </ul>
       </nav>
-      <span className="effect filter" ref={filterRef} />
-      <span className="effect text" ref={textRef} />
+      <span className={`${styles.effect} ${styles.filter}`} ref={filterRef} />
+      <span className={`${styles.effect} ${styles.text}`} ref={textRef} />
     </div>
   );
 };

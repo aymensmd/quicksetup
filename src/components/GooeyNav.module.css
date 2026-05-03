@@ -1,14 +1,43 @@
-.gooey-nav-container {
+.linearEase {
+  --linear-ease: linear(
+    0,
+    0.068,
+    0.19 2.7%,
+    0.804 8.1%,
+    1.037,
+    1.199 13.2%,
+    1.245,
+    1.27 15.8%,
+    1.274,
+    1.272 17.4%,
+    1.249 19.1%,
+    0.996 28%,
+    0.949,
+    0.928 33.3%,
+    0.926,
+    0.933 36.8%,
+    1.001 45.6%,
+    1.013,
+    1.019 50.8%,
+    1.018 54.4%,
+    1 63.1%,
+    0.995 68%,
+    1.001 85%,
+    1
+  );
+}
+
+.gooeyNavContainer {
   position: relative;
 }
 
-.gooey-nav-container nav {
+.gooeyNavContainer nav {
   display: flex;
   position: relative;
   transform: translate3d(0, 0, 0.01px);
 }
 
-.gooey-nav-container nav ul {
+.gooeyNavContainer nav ul {
   display: flex;
   gap: 2em;
   list-style: none;
@@ -20,7 +49,7 @@
   text-shadow: 0 1px 1px hsl(205deg 30% 10% / 0.2);
 }
 
-.gooey-nav-container nav ul li {
+.gooeyNavContainer nav ul li {
   border-radius: 100vw;
   position: relative;
   cursor: pointer;
@@ -32,16 +61,16 @@
   color: white;
 }
 
-.gooey-nav-container nav ul li a {
+.gooeyNavContainer nav ul li a {
   display: inline-block;
   padding: 0.6em 1em;
 }
 
-.gooey-nav-container nav ul li:focus-within:has(:focus-visible) {
+.gooeyNavContainer nav ul li:focus-within:has(:focus-visible) {
   box-shadow: 0 0 0.5px 1.5px white;
 }
 
-.gooey-nav-container nav ul li::after {
+.gooeyNavContainer nav ul li::after {
   content: '';
   position: absolute;
   inset: 0;
@@ -53,17 +82,17 @@
   z-index: -1;
 }
 
-.gooey-nav-container nav ul li.active {
+.gooeyNavContainer nav ul li.active {
   color: black;
   text-shadow: none;
 }
 
-.gooey-nav-container nav ul li.active::after {
+.gooeyNavContainer nav ul li.active::after {
   opacity: 1;
   transform: scale(1);
 }
 
-.gooey-nav-container .effect {
+.gooeyNavContainer .effect {
   position: absolute;
   left: 0;
   top: 0;
@@ -76,21 +105,21 @@
   z-index: 1;
 }
 
-.gooey-nav-container .effect.text {
+.gooeyNavContainer .effect.text {
   color: white;
   transition: color 0.3s ease;
 }
 
-.gooey-nav-container .effect.text.active {
+.gooeyNavContainer .effect.text.active {
   color: black;
 }
 
-.gooey-nav-container .effect.filter {
+.gooeyNavContainer .effect.filter {
   filter: blur(7px) contrast(100) blur(0);
   mix-blend-mode: lighten;
 }
 
-.gooey-nav-container .effect.filter::before {
+.gooeyNavContainer .effect.filter::before {
   content: '';
   position: absolute;
   inset: -75px;
@@ -98,7 +127,7 @@
   background: black;
 }
 
-.gooey-nav-container .effect.filter::after {
+.gooeyNavContainer .effect.filter::after {
   content: '';
   position: absolute;
   inset: 0;
@@ -109,7 +138,7 @@
   border-radius: 100vw;
 }
 
-.gooey-nav-container .effect.active::after {
+.gooeyNavContainer .effect.active::after {
   animation: pill 0.3s ease both;
 }
 
@@ -120,8 +149,8 @@
   }
 }
 
-.particle,
-.point {
+:global(.particle),
+:global(.point) {
   display: block;
   opacity: 0;
   width: 20px;
@@ -130,7 +159,7 @@
   transform-origin: center;
 }
 
-.particle {
+:global(.particle) {
   --time: 5s;
   position: absolute;
   top: calc(50% - 8px);
@@ -138,7 +167,7 @@
   animation: particle calc(var(--time)) ease 1 -350ms;
 }
 
-.point {
+:global(.point) {
   background: var(--color);
   opacity: 1;
   animation: point calc(var(--time)) ease 1 -350ms;
@@ -148,7 +177,20 @@
   0% {
     transform: rotate(0deg) translate(calc(var(--start-x)), calc(var(--start-y)));
     opacity: 1;
+    animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45);
   }
+
+  70% {
+    transform: rotate(calc(var(--rotate) * 0.5)) translate(calc(var(--end-x) * 1.2), calc(var(--end-y) * 1.2));
+    opacity: 1;
+    animation-timing-function: ease;
+  }
+
+  85% {
+    transform: rotate(calc(var(--rotate) * 0.66)) translate(calc(var(--end-x)), calc(var(--end-y)));
+    opacity: 1;
+  }
+
   100% {
     transform: rotate(calc(var(--rotate) * 1.2)) translate(calc(var(--end-x) * 0.5), calc(var(--end-y) * 0.5));
     opacity: 1;
@@ -159,9 +201,30 @@
   0% {
     transform: scale(0);
     opacity: 0;
+    animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45);
   }
-  100% {
+
+  25% {
+    transform: scale(calc(var(--scale) * 0.25));
+  }
+
+  38% {
+    opacity: 1;
+  }
+
+  65% {
     transform: scale(var(--scale));
     opacity: 1;
+    animation-timing-function: ease;
+  }
+
+  85% {
+    transform: scale(var(--scale));
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(0);
+    opacity: 0;
   }
 }
