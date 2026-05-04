@@ -148,7 +148,7 @@ export default function Home() {
   const handleSplineLoad = (splineApp: { setZoom?: (zoom: number) => void }) => {
     // Neutral framing to keep the object centered.
     try {
-      splineApp.setZoom?.(1);
+      splineApp.setZoom?.(0.5);
     } catch {
       // no-op: keep defaults if runtime API shape changes
     }
