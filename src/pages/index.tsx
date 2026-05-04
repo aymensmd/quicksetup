@@ -143,6 +143,16 @@ export default function Home() {
   const [carouselApi, setCarouselApi] = useState<CarouselApi | null>(null);
   const [current, setCurrent] = useState<number>(0);
   const [count, setCount] = useState<number>(0);
+  const [isSceneHover, setIsSceneHover] = useState(false);
+
+  const handleSplineLoad = (splineApp: { setZoom?: (zoom: number) => void }) => {
+    // Keep slight perspective while nudging framing to sit cleanly in hero layout.
+    try {
+      splineApp.setZoom?.(1.04);
+    } catch {
+      // no-op: keep defaults if runtime API shape changes
+    }
+  };
 
   // handle scroll
   useEffect(() => {
@@ -299,10 +309,30 @@ export default function Home() {
             className="relative mt-12 w-full max-w-3xl xl:mt-0 xl:max-w-none"
           >
             <div className="absolute inset-0 -z-10 bg-gradient-to-br from-primary/20 via-transparent to-secondary/20 blur-3xl" />
-            <div id="canvas-container" className="relative w-full shadow-2xl shadow-black/20">
+            <div
+              id="canvas-container"
+              className={cn(
+                "relative w-full shadow-2xl shadow-black/20",
+                styles.heroScene,
+                isSceneHover && styles["heroScene--hover"]
+              )}
+              onMouseEnter={() => setIsSceneHover(true)}
+              onMouseLeave={() => setIsSceneHover(false)}
+            >
+              <div className={styles.heroScenePattern} />
+              <div className={styles.heroSceneLightWrap}>
+                <span className={styles.heroSceneAmbient} />
+                <span className={styles.heroSceneKey} />
+                <span className={styles.heroSceneRim} />
+              </div>
               <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-24 bg-gradient-to-b from-background via-background/30 to-transparent" />
               <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-24 bg-gradient-to-t from-background via-background/30 to-transparent" />
-              <Spline scene="https://prod.spline.design/ENRf0xsOUUK3CzAm/scene.splinecode" />
+              <div className={styles.heroSceneViewport}>
+                <Spline
+                  scene="https://prod.spline.design/ENRf0xsOUUK3CzAm/scene.splinecode"
+                  onLoad={handleSplineLoad}
+                />
+              </div>
             </div>
           </motion.div>
         </section>

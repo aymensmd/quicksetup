@@ -31,3 +31,102 @@
     /* this fixes the overflow:hidden in Chrome/Opera */
     -webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC);
 }
+
+.heroScene {
+    position: relative;
+    background:
+      radial-gradient(120% 80% at 18% 8%, rgba(56, 115, 255, 0.16), transparent 60%),
+      linear-gradient(165deg, #05070c 0%, #070b14 42%, #04060b 100%);
+    border-color: rgba(255, 255, 255, 0.08);
+    box-shadow:
+      0 24px 60px rgba(0, 0, 0, 0.45),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+    transform: translateZ(0);
+    transition: transform 320ms ease, box-shadow 320ms ease, border-color 320ms ease;
+}
+
+.heroScene--hover {
+    transform: scale(1.02);
+    border-color: rgba(99, 155, 255, 0.35);
+    box-shadow:
+      0 30px 70px rgba(0, 0, 0, 0.55),
+      0 0 34px rgba(68, 130, 255, 0.2),
+      inset 0 0 0 1px rgba(120, 180, 255, 0.22);
+}
+
+.heroScenePattern {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2;
+    opacity: 0.3;
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(130, 160, 220, 0.16) 1px, transparent 0),
+      linear-gradient(rgba(130, 160, 220, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(130, 160, 220, 0.08) 1px, transparent 1px);
+    background-size: 16px 16px, 32px 32px, 32px 32px;
+    background-position: 0 0, -1px -1px, -1px -1px;
+    mask-image: radial-gradient(70% 62% at 50% 45%, #000 65%, transparent 100%);
+}
+
+.heroSceneLightWrap {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.heroSceneAmbient,
+.heroSceneKey,
+.heroSceneRim {
+    position: absolute;
+    border-radius: 999px;
+    filter: blur(28px);
+}
+
+.heroSceneAmbient {
+    width: 82%;
+    height: 62%;
+    left: 9%;
+    top: 14%;
+    background: radial-gradient(circle, rgba(120, 165, 255, 0.3) 0%, rgba(74, 119, 220, 0.05) 70%, transparent 100%);
+}
+
+.heroSceneKey {
+    width: 56%;
+    height: 48%;
+    left: 5%;
+    top: 1%;
+    background: radial-gradient(circle, rgba(138, 180, 255, 0.42) 0%, rgba(95, 140, 255, 0.08) 72%, transparent 100%);
+}
+
+.heroSceneRim {
+    width: 38%;
+    height: 84%;
+    right: -8%;
+    top: 8%;
+    background: radial-gradient(circle, rgba(110, 200, 255, 0.22) 0%, rgba(110, 200, 255, 0.07) 55%, transparent 100%);
+}
+
+.heroSceneViewport {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    height: 100%;
+    transform: translateX(7%) scale(1.03);
+    transform-origin: center;
+}
+
+.heroScene--hover .heroSceneAmbient {
+    background: radial-gradient(circle, rgba(120, 165, 255, 0.38) 0%, rgba(74, 119, 220, 0.08) 70%, transparent 100%);
+}
+
+.heroScene--hover .heroSceneKey {
+    background: radial-gradient(circle, rgba(138, 180, 255, 0.5) 0%, rgba(95, 140, 255, 0.12) 72%, transparent 100%);
+}
+
+@media (max-width: 1279px) {
+    .heroSceneViewport {
+        transform: translateX(0) scale(1.01);
+    }
+}
