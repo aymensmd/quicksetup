@@ -146,9 +146,9 @@ export default function Home() {
   const [isSceneHover, setIsSceneHover] = useState(false);
 
   const handleSplineLoad = (splineApp: { setZoom?: (zoom: number) => void }) => {
-    // Keep slight perspective while nudging framing to sit cleanly in hero layout.
+    // Keep perspective, but avoid edge cropping in the hero slot.
     try {
-      splineApp.setZoom?.(1.04);
+      splineApp.setZoom?.(0.9);
     } catch {
       // no-op: keep defaults if runtime API shape changes
     }
