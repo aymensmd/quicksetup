@@ -319,14 +319,6 @@ export default function Home() {
               onMouseEnter={() => setIsSceneHover(true)}
               onMouseLeave={() => setIsSceneHover(false)}
             >
-              <div className={styles.heroScenePattern} />
-              <div className={styles.heroSceneLightWrap}>
-                <span className={styles.heroSceneAmbient} />
-                <span className={styles.heroSceneKey} />
-                <span className={styles.heroSceneRim} />
-              </div>
-              <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-24 bg-gradient-to-b from-background via-background/30 to-transparent" />
-              <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-24 bg-gradient-to-t from-background via-background/30 to-transparent" />
               <div className={styles.heroSceneViewport}>
                 <Spline
                   scene="https://prod.spline.design/ENRf0xsOUUK3CzAm/scene.splinecode"

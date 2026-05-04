@@ -26,10 +26,7 @@
 /* spline canvas */
 #canvas-container
 {
-    @apply bg-background border rounded-3xl h-[515px] xl:w-[690px] xl:min-w-[690px] overflow-hidden;
-
-    /* this fixes the overflow:hidden in Chrome/Opera */
-    -webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC);
+    @apply h-[515px] xl:w-[690px] xl:min-w-[690px] overflow-visible;
 }
 
 .heroScene {
@@ -55,38 +52,6 @@
     display: none;
 }
 
-.heroSceneAmbient,
-.heroSceneKey,
-.heroSceneRim {
-    position: absolute;
-    border-radius: 999px;
-    filter: blur(28px);
-}
-
-.heroSceneAmbient {
-    width: 82%;
-    height: 62%;
-    left: 9%;
-    top: 14%;
-    background: radial-gradient(circle, rgba(120, 165, 255, 0.3) 0%, rgba(74, 119, 220, 0.05) 70%, transparent 100%);
-}
-
-.heroSceneKey {
-    width: 56%;
-    height: 48%;
-    left: 5%;
-    top: 1%;
-    background: radial-gradient(circle, rgba(138, 180, 255, 0.42) 0%, rgba(95, 140, 255, 0.08) 72%, transparent 100%);
-}
-
-.heroSceneRim {
-    width: 38%;
-    height: 84%;
-    right: -8%;
-    top: 8%;
-    background: radial-gradient(circle, rgba(110, 200, 255, 0.22) 0%, rgba(110, 200, 255, 0.07) 55%, transparent 100%);
-}
-
 .heroSceneViewport {
     position: relative;
     z-index: 3;
@@ -94,14 +59,6 @@
     height: 100%;
     transform: translateX(7%) scale(1.03);
     transform-origin: center;
-}
-
-.heroScene--hover .heroSceneAmbient {
-    background: radial-gradient(circle, rgba(120, 165, 255, 0.38) 0%, rgba(74, 119, 220, 0.08) 70%, transparent 100%);
-}
-
-.heroScene--hover .heroSceneKey {
-    background: radial-gradient(circle, rgba(138, 180, 255, 0.5) 0%, rgba(95, 140, 255, 0.12) 72%, transparent 100%);
 }
 
 @media (max-width: 1279px) {
